@@ -22,3 +22,5 @@ const About = () => (
     <Footer />
   </div>
 );
+
+export default About;

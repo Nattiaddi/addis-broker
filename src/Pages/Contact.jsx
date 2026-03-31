@@ -28,3 +28,5 @@ const Contact = () => (
     <Footer />
   </div>
 );
+
+export default Contact;
