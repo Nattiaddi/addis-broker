@@ -3,8 +3,8 @@ import Home from './Pages/Home.jsx';
 import About from './Pages/About.jsx';
 import Contact from './Pages/Contact.jsx';
 import Auth from './Pages/Auth.jsx';
-import Navbar from './components/Navbar.jsx'; // Added .jsx
-import Footer from './components/Footer.jsx'; // Added .jsx
+import Navbar from './components/Navbar.jsx';
+import Footer from './components/Footer.jsx';
 
 function App() {
   return (
