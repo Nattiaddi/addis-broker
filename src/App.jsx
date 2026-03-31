@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Home from './pages/Home.jsx';        // Added .jsx
+import About from './pages/About.jsx';      // Added .jsx
+import Contact from './pages/Contact.jsx';  // Added .jsx
+import Auth from './pages/Auth.jsx';        // Added this for your Login
+import Navbar from './components/Navbar.jsx'; // Added .jsx
+import Footer from './components/Footer.jsx'; // Added .jsx
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Auth />} />
       </Routes>
       <Footer />
     </Router>
