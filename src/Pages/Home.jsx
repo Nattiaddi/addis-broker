@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ListingCard from '../components/ListingCard.jsx';
 
-// Mock data for the AddisBroker platform
 const listings = [
   { id: 1, type: 'house', title: 'Luxury Villa in Bole', price: '45,000,000 ETB', image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=800', location: 'Bole, Addis Ababa' },
   { id: 2, type: 'car', title: 'Mercedes-Benz G-Wagon', price: '32,000,000 ETB', image: 'https://images.unsplash.com/photo-1520031441872-265e4ff70366?auto=format&fit=crop&q=80&w=800', location: 'Showroom, Addis' },
@@ -20,7 +19,6 @@ const Home = () => {
     <div className="min-h-screen bg-black text-white pt-24 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tighter">
             FIND YOUR <span className="text-addis-gold">LEGACY</span>
@@ -30,7 +28,6 @@ const Home = () => {
           </p>
         </div>
 
-        {/* Filter Tabs */}
         <div className="flex justify-center space-x-4 mb-12">
           {['all', 'house', 'car'].map((type) => (
             <button
@@ -47,15 +44,14 @@ const Home = () => {
           ))}
         </div>
 
-        {/* Listings Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {filteredListings.map((item) => (
             <ListingCard key={item.id} item={item} />
           ))}
         </div>
         
-      </div> {/* Closes the max-w-7xl div */}
-    </div> {/* Closes the main wrapper div */}
+      </div> 
+    </div>
   );
 };
 
