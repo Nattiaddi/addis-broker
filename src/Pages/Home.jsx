@@ -1,99 +1,62 @@
 import React, { useState } from 'react';
-import { listings } from '../data/listings';
-import ListingCard from '../components/ListingCard';
+import ListingCard from '../components/ListingCard.jsx';
+
+// Mock data for the AddisBroker platform
+const listings = [
+  { id: 1, type: 'house', title: 'Luxury Villa in Bole', price: '45,000,000 ETB', image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=800', location: 'Bole, Addis Ababa' },
+  { id: 2, type: 'car', title: 'Mercedes-Benz G-Wagon', price: '32,000,000 ETB', image: 'https://images.unsplash.com/photo-1520031441872-265e4ff70366?auto=format&fit=crop&q=80&w=800', location: 'Showroom, Addis' },
+  { id: 3, type: 'house', title: 'Modern Apartment', price: '12,500,000 ETB', image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=800', location: 'Old Airport, Addis' },
+  { id: 4, type: 'car', title: 'Toyota Land Cruiser V8', price: '28,500,000 ETB', image: 'https://images.unsplash.com/photo-1594568284297-7c64464062b1?auto=format&fit=crop&q=80&w=800', location: 'Gerji, Addis' },
+];
 
 const Home = () => {
-  // 1. Setup "State" to remember what the user selects
-  const [category, setCategory] = useState('ALL');
-  const [location, setLocation] = useState('ALL');
-  const [type, setType] = useState('ALL');
+  const [filter, setFilter] = useState('all');
 
-  // 2. The Filter Logic
-  const filteredListings = listings.filter((item) => {
-    const matchCategory = category === 'ALL' || item.category === category;
-    const matchLocation = location === 'ALL' || item.location.includes(location);
-    const matchType = type === 'ALL' || item.status === type;
-    return matchCategory && matchLocation && matchType;
-  });
+  const filteredListings = filter === 'all' 
+    ? listings 
+    : listings.filter(item => item.type === filter);
 
   return (
-    <div className="bg-addis-black min-h-screen text-white">
-      {/* HERO SECTION */}
-      <section className="relative pt-32 pb-20 px-6 text-center">
-        <h1 className="text-6xl font-serif mb-8 italic">Find Excellence in <span className="text-addis-gold">Addis</span></h1>
+    <div className="min-h-screen bg-black text-white pt-24 pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* THE SEARCH ENGINE BAR */}
-        <div className="bg-addis-dark p-6 rounded-sm border border-addis-gold/20 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 shadow-2xl">
-          
-          {/* Category Filter */}
-          <div className="text-left">
-            <label className="text-[10px] text-addis-gold uppercase font-bold tracking-widest ml-1">Category</label>
-            <select 
-              onChange={(e) => setCategory(e.target.value)}
-              className="w-full bg-black border border-white/10 p-3 mt-1 outline-none focus:border-addis-gold text-sm"
-            >
-              <option value="ALL">All Categories</option>
-              <option value="CAR">Cars</option>
-              <option value="APARTMENT">Apartments</option>
-              <option value="VILLA">Villas</option>
-              <option value="GUEST HOUSE">Guest Houses</option>
-            </select>
-          </div>
+        {/* Hero Section */}
+        <div className="text-center mb-16">
+          <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tighter">
+            FIND YOUR <span className="text-addis-gold">LEGACY</span>
+          </h1>
+          <p className="text-gray-400 text-xl max-w-2xl mx-auto">
+            The premier marketplace for Ethiopia's most exclusive real estate and vehicles.
+          </p>
+        </div>
 
-          {/* Location Filter */}
-          <div className="text-left">
-            <label className="text-[10px] text-addis-gold uppercase font-bold tracking-widest ml-1">Sub-City</label>
-            <select 
-              onChange={(e) => setLocation(e.target.value)}
-              className="w-full bg-black border border-white/10 p-3 mt-1 outline-none focus:border-addis-gold text-sm"
+        {/* Filter Tabs */}
+        <div className="flex justify-center space-x-4 mb-12">
+          {['all', 'house', 'car'].map((type) => (
+            <button
+              key={type}
+              onClick={() => setFilter(type)}
+              className={`px-8 py-2 rounded-full border-2 transition-all duration-300 uppercase font-bold tracking-widest text-xs ${
+                filter === type 
+                ? 'border-addis-gold bg-addis-gold text-black' 
+                : 'border-gray-800 text-gray-500 hover:border-gray-600'
+              }`}
             >
-              <option value="ALL">All of Addis</option>
-              <option value="Bole">Bole</option>
-              <option value="Kirkos">Kirkos / Kazanchis</option>
-              <option value="Yeka">Yeka / CMC</option>
-              <option value="Lemi Kura">Lemi Kura / Ayat</option>
-            </select>
-          </div>
-
-          {/* Buy/Rent Filter */}
-          <div className="text-left">
-            <label className="text-[10px] text-addis-gold uppercase font-bold tracking-widest ml-1">Service</label>
-            <select 
-              onChange={(e) => setType(e.target.value)}
-              className="w-full bg-black border border-white/10 p-3 mt-1 outline-none focus:border-addis-gold text-sm"
-            >
-              <option value="ALL">Buy & Rent</option>
-              <option value="For Sale">For Sale</option>
-              <option value="For Rent">For Rent</option>
-            </select>
-          </div>
-
-          {/* Search Button (Visual Only since filtering is live) */}
-          <div className="flex items-end">
-            <button className="w-full bg-addis-gold text-black font-black py-3 hover:bg-addis-gold-light transition shadow-[0_0_20px_rgba(212,175,55,0.2)]">
-              SEARCH
+              {type}
             </button>
-          </div>
-        </div>
-      </section>
-
-      {/* RESULTS SECTION */}
-      <section className="max-w-7xl mx-auto px-6 py-10">
-        <div className="mb-8 flex justify-between items-center">
-          <p className="text-gray-500 text-sm">Showing {filteredListings.length} premium results</p>
-          {filteredListings.length === 0 && (
-            <p className="text-addis-gold font-bold italic">No results found. Try a different filter.</p>
-          )}
+          ))}
         </div>
 
+        {/* Listings Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {filteredListings.map((item) => (
             <ListingCard key={item.id} item={item} />
           ))}
         </div>
-      </div>
-    </div>
+        
+      </div> {/* Closes the max-w-7xl div */}
+    </div> {/* Closes the main wrapper div */}
   );
-}
+};
 
-export default Home;      
+export default Home;
