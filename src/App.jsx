@@ -1,4 +1,5 @@
 import React from 'react';
+import Details from './Pages/Details';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -26,6 +27,9 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/" element={<Home lang={lang} />} />
+              <Route path="/admin" element={<Admin lang={lang} />} />
+              <Route path="/details/:id" element={<Details lang={lang} />} /> {/* አዲሱ መስመር */}
             </Routes>
             
             {/* BOTTOM AD */}
