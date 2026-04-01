@@ -12,7 +12,7 @@ const Admin = () => {
   const [status, setStatus] = useState('');
 
   const pin = prompt("Enter Admin PIN:");
-if (pin !== "1234") return <h1>Access Denied</h1>;
+if (pin !== "1430") return <h1>Access Denied</h1>;
 
   const handleSubmit = async (e) => {
     e.preventDefault();

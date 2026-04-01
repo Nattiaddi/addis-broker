@@ -4,6 +4,13 @@
 
 :root {
   background-color: #050505; /* Addis-Black */
+  color: #ffffff;            /* Global White Text Fix */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: white;             /* Double-check for mobile browsers */
 }
 
 /* Custom Scrollbar for the Gold Theme */
@@ -14,6 +21,6 @@
   background: #050505;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D4AF37;
+  background: #D4AF37; 
   border-radius: 10px;
 }
