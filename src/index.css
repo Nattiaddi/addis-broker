@@ -21,4 +21,33 @@ body {
   perspective: 1000px;
   min-height: 300px; /* Ensure it's not collapsed */
   margin-top: 50px;
+
+  .ad-box-vertical {
+  width: 160px;
+  height: 600px;
+  background: #111;
+  border: 1px dashed #333;
+  position: sticky;
+  top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+}
+
+.ad-box-horizontal {
+  width: 100%;
+  max-width: 970px;
+  height: 90px;
+  background: #111;
+  border: 1px dashed #333;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444;
+  font-size: 0.6rem;
+}
 }
