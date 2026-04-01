@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import './index.css' // CRITICAL: This links your black background!
+import './index.css' // ይህ መስመር መኖሩ በጣም ወሳኝ ነው!
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
