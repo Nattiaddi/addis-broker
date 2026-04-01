@@ -1,23 +1,27 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './Pages/Home';
-import Admin from './Pages/Admin';
-import About from './Pages/About.jsx';
-import Contact from './Pages/Contact.jsx';
-import Auth from './Pages/Auth.jsx';
-import Navbar from './components/Navbar.jsx';
-import Footer from './components/Footer.jsx';
+import Home from './Pages/Home.jsx';   // Add the .jsx extension explicitly
+import Admin from './Pages/Admin.jsx'; // Add the .jsx extension explicitly
 
 function App() {
   return (
     <Router>
-      <Navbar /> 
       <Routes>
+        {/* The "/" must be exactly this for the home page */}
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Auth />} />
+        
+        {/* Ensure there are no typos in "admin" */}
+        <Route path="/admin" element={<Admin />} />
+        
+        {/* If the page is blank, this 'Catch-all' will tell us if the router is working */}
+        <Route path="*" element={
+          <div className="pt-32 text-center text-white">
+            <h1 className="text-4xl">404</h1>
+            <p>Router is working, but this path doesn't exist.</p>
+            <a href="/" className="text-addis-gold underline">Go Home</a>
+          </div>
+        } />
       </Routes>
-      <Footer />
     </Router>
   );
 }
