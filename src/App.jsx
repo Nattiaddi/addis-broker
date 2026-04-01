@@ -8,28 +8,39 @@ import Admin from './Pages/Admin';
 function App() {
   return (
     <Router>
-      {/* We add 'min-h-screen' and 'flex-col' to ensure the black covers everything */}
-      <div className="bg-black min-h-screen text-white flex flex-col">
+      <div className="flex flex-col min-h-screen bg-black text-white">
         <Header />
         
-        <div className="flex flex-1 pt-24 max-w-[1400px] mx-auto w-full">
-          {/* Left Ad Space */}
-          <aside className="hidden lg:block w-32 p-2">
-            <div className="border border-gray-800 h-[600px] flex items-center justify-center text-[10px] text-gray-700">ADS</div>
+        {/* Main Content Area */}
+        <div className="flex flex-1 w-full max-w-[1600px] mx-auto pt-24">
+          
+          {/* LEFT AD SIDEBAR */}
+          <aside className="hidden xl:flex w-48 p-4 justify-center">
+            <div className="w-full border border-gray-800 h-[600px] flex items-center justify-center text-[10px] text-gray-600 uppercase tracking-widest">
+              Advertisement
+            </div>
           </aside>
 
+          {/* CENTER FEED */}
           <main className="flex-1 px-4">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/admin" element={<Admin />} />
-              <Route path="*" element={<div className="text-center pt-20">Page Not Found</div>} />
             </Routes>
+            
+            {/* BOTTOM AD */}
+            <div className="w-full h-24 border border-gray-800 my-10 flex items-center justify-center text-[10px] text-gray-600 uppercase">
+              Bottom Ad Space
+            </div>
           </main>
 
-          {/* Right Ad Space */}
-          <aside className="hidden lg:block w-32 p-2">
-            <div className="border border-gray-800 h-[600px] flex items-center justify-center text-[10px] text-gray-700">ADS</div>
+          {/* RIGHT AD SIDEBAR */}
+          <aside className="hidden xl:flex w-48 p-4 justify-center">
+            <div className="w-full border border-gray-800 h-[600px] flex items-center justify-center text-[10px] text-gray-600 uppercase tracking-widest">
+              Advertisement
+            </div>
           </aside>
+          
         </div>
 
         <Footer />
