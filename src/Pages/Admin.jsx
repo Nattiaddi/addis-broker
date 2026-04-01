@@ -4,79 +4,87 @@ import { supabase } from '../supabaseClient';
 const Admin = () => {
   const [formData, setFormData] = useState({
     title: '',
-    type: 'house',
     price: '',
     location: '',
-    image: ''
+    image: '',
+    type: 'house' // Default type
   });
   const [status, setStatus] = useState('');
 
-  const pin = prompt("Enter Admin PIN:");
-if (pin !== "1430") return <h1>Access Denied</h1>;
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus('Uploading...');
+    setStatus('በመላክ ላይ...');
 
     const { data, error } = await supabase
       .from('listings')
       .insert([formData]);
 
     if (error) {
-      setStatus('Error: ' + error.message);
+      console.error(error);
+      setStatus('ስህተት ተፈጥሯል፡ ' + error.message);
     } else {
-      setStatus('Success! Listing added to AddisBroker.');
-      setFormData({ title: '', type: 'house', price: '', location: '', image: '' });
+      setStatus('በስኬት ተጨምሯል! ✅');
+      setFormData({ title: '', price: '', location: '', image: '', type: 'house' });
     }
   };
 
   return (
-    <div className="min-h-screen bg-black text-white pt-32 px-4">
-      <div className="max-w-xl mx-auto bg-[#111] p-8 rounded-3xl border border-gray-800">
-        <h2 className="text-3xl font-black mb-8 text-addis-gold uppercase tracking-tighter">Add New Asset</h2>
-        
-        <form onSubmit={handleSubmit} className="space-y-6">
+    <div className="max-w-4xl mx-auto p-8 bg-[#0a0a0a] rounded-3xl border border-gray-900 my-10">
+      <h2 className="text-[#f7d774] text-3xl font-black mb-8 uppercase italic">Add New Listing</h2>
+      
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <input 
-            type="text" placeholder="Property/Car Title" required
-            className="w-full bg-black border border-gray-800 p-4 rounded-xl outline-none focus:border-addis-gold"
-            value={formData.title} onChange={(e) => setFormData({...formData, title: e.target.value})}
+            type="text" placeholder="ንብረት ስም (Title)" 
+            className="bg-black border border-gray-800 p-4 rounded-xl text-white outline-none focus:border-[#f7d774]"
+            value={formData.title}
+            onChange={(e) => setFormData({...formData, title: e.target.value})}
+            required
           />
-          
+          <input 
+            type="text" placeholder="ዋጋ (Price) - ምሳሌ፡ 5,000,000 ETB" 
+            className="bg-black border border-gray-800 p-4 rounded-xl text-white outline-none focus:border-[#f7d774]"
+            value={formData.price}
+            onChange={(e) => setFormData({...formData, price: e.target.value})}
+            required
+          />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <input 
+            type="text" placeholder="አድራሻ (Location)" 
+            className="bg-black border border-gray-800 p-4 rounded-xl text-white outline-none focus:border-[#f7d774]"
+            value={formData.location}
+            onChange={(e) => setFormData({...formData, location: e.target.value})}
+            required
+          />
           <select 
-            className="w-full bg-black border border-gray-800 p-4 rounded-xl outline-none focus:border-addis-gold"
-            value={formData.type} onChange={(e) => setFormData({...formData, type: e.target.value})}
+            className="bg-black border border-gray-800 p-4 rounded-xl text-white outline-none focus:border-[#f7d774]"
+            value={formData.type}
+            onChange={(e) => setFormData({...formData, type: e.target.value})}
           >
-            <option value="house">House / Villa</option>
-            <option value="car">Vehicle</option>
+            <option value="house">ቤት (House)</option>
+            <option value="car">መኪና (Car)</option>
           </select>
+        </div>
 
-          <input 
-            type="text" placeholder="Price (e.g. 12,000,000 ETB)" required
-            className="w-full bg-black border border-gray-800 p-4 rounded-xl outline-none focus:border-addis-gold"
-            value={formData.price} onChange={(e) => setFormData({...formData, price: e.target.value})}
-          />
+        <input 
+          type="text" placeholder="የምስል ሊንክ (Image URL)" 
+          className="w-full bg-black border border-gray-800 p-4 rounded-xl text-white outline-none focus:border-[#f7d774]"
+          value={formData.image}
+          onChange={(e) => setFormData({...formData, image: e.target.value})}
+          required
+        />
 
-          <input 
-            type="text" placeholder="Location (e.g. Bole, Addis)" required
-            className="w-full bg-black border border-gray-800 p-4 rounded-xl outline-none focus:border-addis-gold"
-            value={formData.location} onChange={(e) => setFormData({...formData, location: e.target.value})}
-          />
+        <button 
+          type="submit" 
+          className="w-full bg-[#f7d774] text-black font-bold py-4 rounded-xl uppercase hover:bg-white transition-all"
+        >
+          መረጃውን መዝግብ
+        </button>
+      </form>
 
-          <input 
-            type="text" placeholder="Image URL (Unsplash or direct link)" required
-            className="w-full bg-black border border-gray-800 p-4 rounded-xl outline-none focus:border-addis-gold"
-            value={formData.image} onChange={(e) => setFormData({...formData, image: e.target.value})}
-          />
-
-          <button 
-            type="submit" 
-            className="w-full bg-addis-gold text-black font-black py-4 rounded-xl uppercase tracking-widest hover:bg-yellow-500 transition-all"
-          >
-            Publish Listing
-          </button>
-        </form>
-        {status && <p className="mt-6 text-center text-sm font-bold text-gray-400">{status}</p>}
-      </div>
+      {status && <p className="mt-6 text-center text-[#f7d774] font-bold">{status}</p>}
     </div>
   );
 };
