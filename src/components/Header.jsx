@@ -2,15 +2,17 @@ import { Link } from 'react-router-dom';
 
 const Header = () => (
   <header className="header">
-    <Link to="/" className="text-2xl font-black text-white uppercase italic">
-      Addis<span className="text-[#f7d774]">Broker</span>
+    <Link to="/" className="text-xl font-bold text-white">
+      ADDIS<span className="text-[#f7d774]">BROKER</span>
     </Link>
-    <nav className="nav-links">
+    
+    <nav className="nav-links flex items-center">
       <Link to="/">Home</Link>
       <Link to="/about">About</Link>
-      <Link to="/contact">Contact</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/signup" className="border border-[#f7d774] px-4 py-2 rounded-full hover:bg-[#f7d774] hover:text-black">Sign Up</Link>
+      {/* ADDED ADMIN BUTTON HERE */}
+      <Link to="/admin" className="opacity-50 hover:opacity-100 ml-6 text-[10px] border border-gray-700 px-2 py-1 rounded">
+        Admin
+      </Link>
     </nav>
   </header>
 );

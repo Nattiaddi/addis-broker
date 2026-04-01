@@ -43,6 +43,16 @@ const Home = () => {
         </div>
       </section>
 
+      <div className="image-container">
+  {/* Add a temporary background color to see if they exist */}
+  <div className="floating-placeholder bg-[#111] border border-[#f7d774] w-[200px] h-[250px]">
+     <img src="your-image.jpg" className="w-full h-full object-cover rounded-xl" />
+  </div>
+  <div className="floating-placeholder bg-[#111] border border-[#f7d774] w-[200px] h-[250px]">
+     <img src="your-image.jpg" className="w-full h-full object-cover rounded-xl" />
+  </div>
+</div>
+
       {/* SEARCH & FILTER */}
       <div className="relative z-20 max-w-7xl mx-auto px-6 -mt-10 mb-12">
         <div className="bg-[#111] p-8 rounded-3xl border border-gray-900 shadow-2xl">

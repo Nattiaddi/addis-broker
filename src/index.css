@@ -1,17 +1,24 @@
-@layer utilities {
-  .text-addis-gold {
-    color: #f7d774 !important;
-  }
-  .bg-addis-gold {
-    background-color: #f7d774 !important;
-  }
-  .shadow-gold {
-    box-shadow: 0 0 20px rgba(247, 215, 116, 0.2);
-  }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-black: #000000;
+  --gold: #f7d774;
 }
 
-/* Ensure the Hero H1 is always Gold */
-.hero h1 {
-  color: var(--gold) !important;
-  text-shadow: 0 0 30px var(--gold-glow);
+body {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  margin: 0;
+}
+
+/* Force the 3D container to have height */
+.image-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  perspective: 1000px;
+  min-height: 300px; /* Ensure it's not collapsed */
+  margin-top: 50px;
 }
