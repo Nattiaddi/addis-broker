@@ -3,24 +3,17 @@
 @tailwind utilities;
 
 :root {
-  background-color: #050505; /* Addis-Black */
-  color: #ffffff;            /* Global White Text Fix */
+  --bg-black: #000000;
+  --card-bg: #111111;
+  --gold: #f7d774;
+  --gold-glow: rgba(247, 215, 116, 0.3);
+  --white: #ffffff;
 }
 
+/* Force the background and text colors globally */
 body {
+  background-color: var(--bg-black) !important;
+  color: var(--white) !important;
   margin: 0;
-  padding: 0;
-  color: white;             /* Double-check for mobile browsers */
-}
-
-/* Custom Scrollbar for the Gold Theme */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #050505;
-}
-::-webkit-scrollbar-thumb {
-  background: #D4AF37; 
-  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
 }
