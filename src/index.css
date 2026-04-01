@@ -1,19 +1,17 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --bg-black: #000000;
-  --card-bg: #111111;
-  --gold: #f7d774;
-  --gold-glow: rgba(247, 215, 116, 0.3);
-  --white: #ffffff;
+@layer utilities {
+  .text-addis-gold {
+    color: #f7d774 !important;
+  }
+  .bg-addis-gold {
+    background-color: #f7d774 !important;
+  }
+  .shadow-gold {
+    box-shadow: 0 0 20px rgba(247, 215, 116, 0.2);
+  }
 }
 
-/* Force the background and text colors globally */
-body {
-  background-color: var(--bg-black) !important;
-  color: var(--white) !important;
-  margin: 0;
-  font-family: 'Inter', sans-serif;
+/* Ensure the Hero H1 is always Gold */
+.hero h1 {
+  color: var(--gold) !important;
+  text-shadow: 0 0 30px var(--gold-glow);
 }
