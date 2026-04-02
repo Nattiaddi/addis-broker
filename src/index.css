@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ለሙከራ ያህል ዋና ዋና ስታይሎችን እዚህ እናስቀምጥ */
 :root {
   background-color: #000000;
   color: #ffffff;
